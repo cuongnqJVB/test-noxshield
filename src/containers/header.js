@@ -14,7 +14,53 @@ const Header = ({ pageConfig }) => {
     const [headerConfig, setHeaderConfig] = useState({});
 
     useEffect(() => {
+        const onGetConfig = () => {
+            const indexOf = Storage.get(Storage.PAGE_CONFIG);
+            const config = indexOf ? JSON.parse(indexOf) : {};
+            if (config && config?.id) {
+                setHeaderConfig(config);
+            } else {
+                setHeaderConfig(pageConfig);
+            }
+        }
         onGetConfig();
+    }, [pageConfig]);
+
+    useEffect(() => {
+        const showHideSubMenu = () => {
+            const dropdownLinks = document.querySelectorAll(
+                '.menu_content .wrap__item'
+            );
+            dropdownLinks.forEach((item) => {
+                item.addEventListener('click', () => {
+                    setToggle(false);
+                });
+            });
+        };
+
+        const handleMenuScroll = () => {
+            if (window.pageYOffset > 80) {
+                setHeaderClass('header-fixed');
+            } else {
+                setHeaderClass('');
+            }
+        };
+
+        const detectModalViewed = () => {
+            const indexOf = Storage.get(Storage.POPUP_VIEWED);
+            const popup = indexOf ? JSON.parse(indexOf) : {};
+            if (!popup?.viewed_at) {
+                setTimeout(() => setPopupVisible(true), 550);
+                const operation = {};
+                operation['viewed_at'] = Date.now();
+                Storage.add({
+                    key: Storage.POPUP_VIEWED,
+                    value: JSON.stringify(operation),
+                });
+            }
+        };
+
+        // Request
         showHideSubMenu();
         detectModalViewed();
         window.addEventListener('scroll', handleMenuScroll);
@@ -29,49 +75,6 @@ const Header = ({ pageConfig }) => {
             window.scrollTo({
                 top: 0,
                 left: 0,
-            });
-        }
-    };
-
-    const onGetConfig = () => {
-        const indexOf = Storage.get(Storage.PAGE_CONFIG);
-        const config = indexOf ? JSON.parse(indexOf) : {};
-        if (config && config?.id) {
-            setHeaderConfig(config);
-        } else {
-            setHeaderConfig(pageConfig);
-        }
-    }
-
-    const showHideSubMenu = () => {
-        const dropdownLinks = document.querySelectorAll(
-            '.menu_content .wrap__item'
-        );
-        dropdownLinks.forEach((item) => {
-            item.addEventListener('click', () => {
-                setToggle(false);
-            });
-        });
-    };
-
-    const handleMenuScroll = () => {
-        if (window.pageYOffset > 80) {
-            setHeaderClass('header-fixed');
-        } else {
-            setHeaderClass('');
-        }
-    };
-
-    const detectModalViewed = () => {
-        const indexOf = Storage.get(Storage.POPUP_VIEWED);
-        const popup = indexOf ? JSON.parse(indexOf) : {};
-        if (!popup?.viewed_at) {
-            setTimeout(() => setPopupVisible(true), 550);
-            const operation = {};
-            operation['viewed_at'] = Date.now();
-            Storage.add({
-                key: Storage.POPUP_VIEWED,
-                value: JSON.stringify(operation),
             });
         }
     };

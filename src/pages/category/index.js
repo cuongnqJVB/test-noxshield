@@ -30,7 +30,7 @@ export default function CategoryPage(props) {
             }
         };
         onGetList();
-    }, []);
+    }, [slug]);
 
     return (
         <div className="page-article">

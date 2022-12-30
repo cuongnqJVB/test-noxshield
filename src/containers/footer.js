@@ -9,38 +9,39 @@ const Footer = ({ footerConfig }) => {
     const [footer, setFooter] = useState({});
     const [categories, setCategories] = useState([]);
 
-    const onGetFooter = async () => {
-        const indexOf = Storage.get(Storage.PAGE_FOOTER);
-        const config = indexOf ? JSON.parse(indexOf) : {};
-        if (config && config?.id) {
-            setFooter(config);
-        } else {
-            setFooter(footerConfig);
-        }
-    };
-
-    const onGetCategory = async () => {
-        try {
-            await categoryService.get({
-                skip: 0,
-                limit: 4,
-                isVisible: true,
-            }).then((response) => {
-                if (!response.code) {
-                    setCategories(response.data || []);
-                }
-            });
-        } catch (ex) {
-            throw ex;
-        }
-    };
+    useEffect(() => {
+        const onGetFooter = async () => {
+            const indexOf = Storage.get(Storage.PAGE_FOOTER);
+            const config = indexOf ? JSON.parse(indexOf) : {};
+            if (config && config?.id) {
+                setFooter(config);
+            } else {
+                setFooter(footerConfig);
+            }
+        };
+        onGetFooter();
+    }, [footerConfig]);
 
     useEffect(() => {
-        onGetFooter();
+        const onGetCategory = async () => {
+            try {
+                await categoryService.get({
+                    skip: 0,
+                    limit: 4,
+                    isVisible: true,
+                }).then((response) => {
+                    if (!response.code) {
+                        setCategories(response.data || []);
+                    }
+                });
+            } catch (ex) {
+                throw ex;
+            }
+        };
         if (router.pathname.includes('article') || router.pathname.includes('category')) {
             onGetCategory();
         }
-    }, []);
+    }, [router.pathname]);
 
     const renderStringToHtml = (content) => {
         return { __html: content };

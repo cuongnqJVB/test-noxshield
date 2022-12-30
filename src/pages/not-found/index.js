@@ -1,5 +1,7 @@
 import { NotFound } from '../../components/error-group';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
     return <NotFound />
 };
+
+export default NotFoundPage;

@@ -35,7 +35,7 @@ const MyApp = ({ Component, pageProps, appConfig }) => {
         } else {
             setPageInfo(pageConfig);
         }
-    }, []);
+    }, [pageConfig, footerConfig]);
 
     return (
         <div className="page-container">
