@@ -1,0 +1,103 @@
+.footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(
+        297.59% 1567.89% at 5.76% 16.5%,
+        #36d1dc 0%,
+        #5b86e5 100%
+    );
+
+    .footer-content {
+        display: flex;
+        padding: 47px 52px 20px 52px;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .top_block {
+            .top__logo {
+                width: 100%;
+                margin-bottom: 5px;
+                max-width: 500px;
+            }
+        }
+
+        .middle_block {
+            width: 100%;
+
+            .item__text {
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        .end_block {
+            width: 100%;
+            display: flex;
+            position: relative;
+        }
+    }
+
+    .text_copyright {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        height: 48px;
+        background: #ffffff;
+    }
+
+    .display-md-none {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .display-md-none {
+            display: flex;
+        }
+
+        .footer-content {
+            padding: 17px 22px 28px 22px;
+
+            .top_block .top__logo {
+                max-width: 250px;
+            }
+
+            .middle_block {
+                .item__text {
+                    margin-bottom: 4px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    &:first-child {
+                        img {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    &:not(:first-child) {
+                        img {
+                            width: 14px;
+                            height: 14px;
+                        }
+                    }
+                }
+            }
+
+            .end_block {
+                .item__certificate {
+                    display: flex;
+                    max-width: 134px;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    top: -76px;
+                    right: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,324 @@
+.modal-wrap {
+    position: fixed;
+    inset: 0;
+    overflow: auto;
+    outline: 0;
+    z-index: -1;
+    transition: all 0.4s;
+    background: rgba(77, 77, 77, 0.7);
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        z-index: 1000;
+    }
+
+    .modal {
+        box-sizing: border-box;
+        padding: 0 0 24px;
+        color: #000000d9;
+        pointer-events: none;
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: auto;
+        max-width: calc(100vw - 32px);
+        margin: 0 auto;
+
+        &.sm {
+            width: 25rem;
+            max-width: 25rem;
+        }
+
+        &.md {
+            width: 35rem;
+            max-width: 35rem;
+        }
+
+        &.lg {
+            width: 60rem;
+            max-width: 60rem;
+        }
+
+        &.zalo {
+            width: 62.2rem;
+            max-width: 62.2rem;
+        }
+
+        &.auto {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        @media (max-width: 996px) {
+
+            &.sm,
+            &.md,
+            &.lg,
+            &.zalo {
+                width: 100%;
+                max-width: calc(100vw - 100px);
+            }
+
+            &.auto {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            &.sm,
+            &.md,
+            &.lg {
+                max-width: calc(100% - 25px);
+            }
+
+            &.zalo {
+                max-width: calc(100% - 70px);
+            }
+        }
+    }
+
+    .modal_body {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-clip: padding-box;
+        border: 0;
+        pointer-events: auto;
+        // box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014,
+        //     0 9px 28px 8px #0000000d;
+
+        &.rounded-60px {
+            border-radius: 60px;
+        }
+    }
+
+    .modal__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #585858;
+        text-decoration: none;
+    }
+}
+
+.banner-popup {
+    width: 100%;
+    position: relative;
+
+    @media (min-width: 769px) {
+        a .img-mobile {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        a .img-desktop {
+            display: none;
+        }
+    }
+
+    a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.zalo-popup {
+    width: 100%;
+    position: relative;
+
+    a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &.desktop {
+        display: block;
+    }
+
+    &.mobile {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        &.desktop {
+            display: none;
+        }
+
+        &.mobile {
+            display: block;
+            max-width: 345px;
+
+            .icon-zalo {
+                position: absolute;
+                top: -36px;
+                right: -38px;
+                width: 101px;
+                height: 95px;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        &.mobile .icon-zalo {
+            right: -30px;
+            width: 85px;
+            height: 95px;
+        }
+    }
+}
+
+.zalo-content {
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 46px;
+    min-height: 616px;
+    border-radius: 26px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    .icon-zalo {
+        position: absolute;
+        top: -86px;
+        right: 15px;
+    }
+
+    .main_content {
+        display: flex;
+        margin-bottom: 48px;
+
+        .content__left {
+            width: 75%;
+
+            .top_header {
+                display: flex;
+                padding-left: 53px;
+                margin-bottom: 30px;
+                align-items: flex-start;
+                flex-direction: column;
+
+                .header__logo {
+                    width: 100%;
+                    max-width: 463px;
+                    text-align: center;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        -o-object-fit: contain;
+                        object-fit: contain;
+                    }
+                }
+            }
+
+            .content__header {
+                padding: 0 34px;
+
+                .item__text {
+                    margin-bottom: 5px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .content__right {
+            width: 25%;
+            max-width: 242px;
+            padding-right: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: column;
+
+            .qrcode {
+                background: #fff;
+                width: 197px;
+                height: 197px;
+            }
+
+            .qrcode,
+            .qrcode img {
+                border-radius: 19px;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .icon-zalo {
+            top: -55px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding-top: 82px;
+        padding-bottom: 0;
+        min-height: 416px;
+        background: radial-gradient(149.71% 144.47% at -6.98% -7.93%,
+                #81f0ff 0%,
+                #dd72df 100%);
+        border-radius: 34px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .main_content {
+            margin-bottom: 35px;
+
+            .content__left {
+                width: 100%;
+
+                .top_header {
+                    padding: 0;
+                    width: 100%;
+                    margin-bottom: 0;
+
+                    .header__logo {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        max-width: 100%;
+                        padding: 0 12px;
+
+                        img {
+                            max-width: 240px;
+                        }
+                    }
+                }
+
+                .content__header {
+                    display: none;
+                }
+            }
+
+            .content__right {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    .btn-zalo-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-zalo-desktop {
+        display: none;
+    }
+}

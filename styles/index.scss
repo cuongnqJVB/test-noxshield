@@ -1,0 +1,21 @@
+// 1: Include global configs
+@import 'utilities';
+@import 'components';
+
+// 2: Include global generics
+@import 'generics/reset';
+@import 'generics/theme';
+
+// 3: Include global elements
+@import 'elements/grid';
+@import 'elements/slick';
+@import 'elements/ckeditor';
+
+// 4: Include global objects
+@import 'objects/layout';
+
+// 5: Include global fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+// 6: Include tailwindcss
+@import 'tailwindcss/tailwind.css';

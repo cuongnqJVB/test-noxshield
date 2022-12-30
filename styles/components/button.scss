@@ -1,0 +1,168 @@
+$bg-default: #ffffff;
+$color-default: #000000;
+
+$bg-primary: #fff;
+$corlor-primary: #5dc5dd;
+
+.ant-btn {
+    height: auto;
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px #00000004;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    color: $color-default;
+    border-color: #d9d9d9;
+    background: $bg-default;
+    overflow: hidden;
+
+    &:hover,
+    &:active {
+        text-decoration: none;
+        background: $bg-default;
+    }
+
+    &:not([disabled]):active {
+        outline: 0;
+        box-shadow: none;
+    }
+
+    &:not([disabled]):hover {
+        text-decoration: none;
+    }
+
+    &.hover-to-scale {
+        transition: all ease 0.3s;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 50%);
+        }
+    }
+
+    &.btn-danger {
+        color: #fff;
+        min-height: 54px;
+        background: var(--red1);
+        border-color: var(--red1);
+        text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+        box-shadow: 0 2px #0000000b;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.btn-light-primary {
+        color: $corlor-primary;
+        border-color: $bg-primary;
+        background: $bg-primary;
+        text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow1);
+        }
+    }
+
+    &.btn-zalo-desktop,
+    &.btn-zalo-mobile {
+        background: #ffffff;
+        white-space: pre-line;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    &.btn-zalo-mobile {
+        padding: 15px 0;
+        color: var(--purple1);
+        border-radius: 19px;
+    }
+
+    &.btn-zalo-desktop {
+        padding: 11px 20px;
+        color: var(--blue2);
+        border-radius: 26px;
+        transition: all ease 0.3s;
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow1);
+        }
+    }
+
+    &.btn-download {
+        color: #fff;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        padding: 10px 15px;
+        border-color: var(--purple1);
+        background-color: var(--purple1);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.btn-secondary {
+        color: #7e8299;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        padding: 10px 15px;
+        border-color: #f5f8fa;
+        background-color: #f5f8fa;
+
+        &:hover {
+            background-color: #eff2f5;
+        }
+    }
+
+    &.btn-color {
+        color: #fff;
+
+        &:not(:last-child) {
+            border-right: 0;
+        }
+
+        &:hover,
+        &.active,
+        &:focus-within {
+            opacity: 0.8;
+        }
+    }
+
+    &.btn-size {
+        &:not(:last-child) {
+            border-right: 0;
+        }
+
+        &:hover,
+        &.active,
+        &:focus-within {
+            color: #fff;
+            border-color: var(--blue1);
+            background-color: var(--blue1);
+        }
+    }
+}
+
+.ant-btn,
+button {
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
